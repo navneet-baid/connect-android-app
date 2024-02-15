@@ -1,0 +1,33 @@
+<!-- res/menu/bottom_navigation_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_global_profiles"
+        android:icon="@drawable/ic_global_profile"
+        android:enabled="true"
+        android:title="Global Profiles" />
+
+    <item
+        android:id="@+id/menu_blog"
+        android:enabled="true"
+        android:title="Blog"
+        android:icon="@drawable/ic_blog"/>
+
+    <item
+        android:id="@+id/menu_chat"
+        android:enabled="false"
+        android:title="" />
+
+    <item
+        android:id="@+id/menu_nearby"
+        android:enabled="true"
+        android:icon="@drawable/ic_nearby"
+        android:title="Nearby" />
+
+
+    <item
+        android:id="@+id/menu_user_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_user"
+        android:title="User Profile" />
+</menu>

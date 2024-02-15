@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".bottomnav.userprofile.ScanQRFragment">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/qrCard"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:elevation="8dp"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/red"
+        app:strokeWidth="2dp">
+
+        <SurfaceView
+            android:id="@+id/cameraPreview"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="1dp" />
+        <View
+            android:id="@+id/scannerLine"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_above="@id/cameraPreview"
+            android:layout_centerInParent="true"
+            android:background="@color/red" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/flashOff"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/qrCard"
+        app:tint="?android:textColorPrimary"
+        android:layout_alignRight="@+id/galleryIcon"
+        android:layout_marginRight="55dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_flash_off" />
+
+    <ImageView
+        android:id="@+id/flashIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/qrCard"
+        android:src="@drawable/ic_flash"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        android:layout_alignRight="@+id/galleryIcon"
+        android:layout_marginRight="55dp"
+        app:tint="?android:textColorPrimary" />
+
+    <ImageView
+        android:id="@+id/galleryIcon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_below="@id/qrCard"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_gallery"
+        app:tint="?android:textColorPrimary" />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Circular ImageView for the profile picture -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_user"
+            android:id="@+id/profileImageView"
+            app:civ_border_color="@color/red"
+            app:civ_border_width="2dp" />
+        <!-- TextView for the name of the person -->
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="John Doe"
+            android:layout_marginLeft="5dp"
+            android:textSize="16sp"
+            android:textColor="?android:textColorPrimary"
+            android:layout_toEndOf="@id/profileImageView"
+            android:layout_alignTop="@id/profileImageView" />
+
+        <!-- TextView for the last message -->
+
+        <!-- TextView for the time of the last message -->
+
+        <TextView
+            android:id="@+id/lastMsgTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameTextView"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="0dp"
+            android:layout_toStartOf="@+id/timeTextView"
+            android:layout_toEndOf="@id/profileImageView"
+            android:text="Hello, how are you?"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2:30 PM"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="12sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@id/nameTextView" />
+
+        <!-- TextView for the number of unseen messages -->
+        <TextView
+            android:id="@+id/unseenMsgTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/timeTextView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            android:text="3"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

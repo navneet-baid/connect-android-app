@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="default_range_values">
+        <item>50.0</item>
+    </array>
+        <!-- ... Other strings ... -->
+
+        <string-array name="genders">
+            <item>Male</item>
+            <item>Female</item>
+            <item>Other</item>
+        </string-array>
+
+        <string-array name="looking_for">
+            <item>Introvert</item>
+            <item>Extrovert</item>
+            <item>Ambivert</item>
+        </string-array>
+
+</resources>

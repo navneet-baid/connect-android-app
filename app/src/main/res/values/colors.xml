@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="card1">#c11cc9</color>
+    <color name="red">#EC4949</color>
+    <color name="blue">#0288D1</color>
+    <color name="selected_tab_color">?android:textColorPrimary</color> <!-- Change this color to your desired selected tab color -->
+
+</resources>

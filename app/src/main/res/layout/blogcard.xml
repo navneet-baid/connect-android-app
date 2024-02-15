@@ -1,0 +1,63 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/blog"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_user" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="?android:textColorPrimary"
+        android:text="Blog Title"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/authorTextView"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:layout_height="wrap_content"
+        android:textColor="?android:textColorPrimary"
+        android:layout_marginTop="4dp"
+        android:text="Author Name"
+        android:textSize="14sp" />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/contentTextView"
+        android:layout_width="match_parent"
+        android:textColor="?android:textColorPrimary"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Four lines of blog content go here. You can replace this with actual content.Four lines of blog content go here. You can replace this with actual content.Four lines of blog content go here. You can replace this with actual content."
+        android:textSize="14sp" />
+
+
+
+</LinearLayout>
+</androidx.cardview.widget.CardView>

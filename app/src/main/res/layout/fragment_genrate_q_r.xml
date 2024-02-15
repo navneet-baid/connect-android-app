@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bottomnav.userprofile.GenerateQRFragment">
+
+    <!-- Circular ImageView -->
+
+    <!-- Name TextView -->
+
+    <!-- MaterialCardView with QR Code -->
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/profileShimmerLayout"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/profileName"
+        android:layout_centerHorizontal="true">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_user"
+            app:civ_border_color="@color/red"
+            app:civ_border_width="1dp"
+
+            />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/profileName"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_user"
+        app:civ_border_color="@color/red"
+        app:civ_border_width="1dp" />
+
+    <TextView
+        android:id="@+id/profileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/qrCard"
+        android:layout_centerHorizontal="true"
+        android:text="John Doe"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/qrCard"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:elevation="8dp"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/red"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:id="@+id/qrCodeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.google.android.material.card.MaterialCardView>
+</RelativeLayout>

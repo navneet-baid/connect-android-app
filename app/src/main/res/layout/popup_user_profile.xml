@@ -1,0 +1,109 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        app:cardCornerRadius="10dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/dialogUserImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/demo_user"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="end"
+                    android:alpha="0.6"
+                    android:layout_marginTop="-58dp"
+                    android:padding="5dp"
+                    android:background="#fff">
+                    <TextView
+                        android:id="@+id/dialogUsernameTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="jhon Doe"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:textColorPrimary"/>
+                    <TextView
+                        android:id="@+id/dialogAgeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21"
+                        android:textSize="16sp"
+                        android:textColor="?android:textColorPrimary"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:alpha="0.9"
+                    android:padding="10dp"
+                    android:background="#F5FFBB4D">
+                    <TextView
+                        android:id="@+id/dialogGenderTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textSize="16sp"
+                        android:textColor="?android:textColorPrimary"/>
+
+                    <TextView
+                        android:id="@+id/dialogBioTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="bio"
+                        android:textSize="16sp"
+                        android:textColor="?android:textColorPrimary"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </ScrollView>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#00000000">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/dialogConnectButton"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
+            android:drawableStart="@drawable/logo_32_32"
+            android:text="connect"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/dialogShowProfileButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="?android:textColorPrimary"
+            android:text="View Profile"/>
+    </LinearLayout>
+</LinearLayout>
+
+

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".usermanagment.PhoneNumberVerificationFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Number is "
+            android:textColor="?android:textColorPrimary"
+            android:layout_margin="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            />
+        <LinearLayout
+            android:id="@+id/phoneLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:transitionName="username_tran">
+
+            <com.hbb20.CountryCodePicker
+                android:id="@+id/countryCodePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:ccp_autoDetectCountry="true"
+                app:ccp_contentColor="?android:textColorPrimary"
+                app:ccp_arrowColor="?android:textColorPrimary"
+                app:ccp_padding="14dp"
+                app:ccp_showNameCode="false" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phoneNumber"
+                android:hint="Phone Number"
+                android:maxLength="13"
+                android:backgroundTint="?android:textColorPrimary"
+                android:textColor="?android:textColorPrimary"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="14sp"
+            android:text="When you tap Continue, Connect will send a text with verification code. Message and data rates may apply. The verified phone number can be used to log in."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/otpLayout"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/helperText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:includeFontPadding="false"
+                android:text="Enter one time password sent on"
+                android:textAlignment="center"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="18sp"
+                app:fontFamily="@font/muli_light" />
+
+
+            <com.chaos.view.PinView
+                android:id="@+id/otpField"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:cursorVisible="true"
+                android:hint="One Time Password"
+                android:importantForAutofill="yes"
+                android:inputType="number"
+                android:itemBackground="?android:textColorSecondary"
+                android:textColor="?android:textColorPrimary"
+                app:cursorColor="?android:textColorPrimary"
+                app:hideLineWhenFilled="false"
+                app:itemCount="6"
+                app:itemHeight="50dp"
+                app:itemRadius="5dp"
+                app:itemWidth="48dp"
+                app:lineColor="?android:textColorPrimary" />
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="5dp"
+            android:elevation="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/otpBtn"
+                android:text="Continue"
+                android:background="?android:textColorPrimary"
+                android:textColor="?android:textColorSecondary"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</FrameLayout>
