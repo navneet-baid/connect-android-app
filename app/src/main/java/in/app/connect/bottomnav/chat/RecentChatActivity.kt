@@ -20,7 +20,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class RecentChatActivity : AppCompatActivity() {
     private var toolbar: Toolbar? = null
-    private lateinit var searchView: SearchView
+//    private lateinit var searchView: SearchView
     private lateinit var gestureDetector: GestureDetector
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
@@ -50,8 +50,7 @@ class RecentChatActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
-                0 -> "Recent Chats"
-                1 -> "All Chats"
+                0 -> "All Chats"
                 else -> ""
             }
         }.attach()
@@ -59,17 +58,24 @@ class RecentChatActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_recent_chat, menu)
-        val searchItem = menu.findItem(R.id.action_search)
-        searchView = searchItem.actionView as SearchView
-
-        searchView.setOnSearchClickListener(object : View.OnClickListener {
-            override fun onClick(v: View) {
-                searchView.isIconified = false
-            }
-        })
+//        val searchItem = menu.findItem(R.id.action_search)
+//        searchView = searchItem.actionView as SearchView
+//
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                // Handle query submission here
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                // Handle query text change here
+//                return true
+//            }
+//        })
 
         return true
     }
+
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector.onTouchEvent(event)
@@ -81,12 +87,12 @@ class RecentChatActivity : AppCompatActivity() {
         private val SWIPE_VELOCITY_THRESHOLD = 100
 
         override fun onFling(
-            e1: MotionEvent,
+            e1: MotionEvent?,
             e2: MotionEvent,
             velocityX: Float,
             velocityY: Float
         ): Boolean {
-            val diffX = e2.x - e1.x
+            val diffX = e2.x - e1!!.x
             if (diffX > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
                 onBackPressed() // Close the activity and return to the previous one
             }
@@ -100,12 +106,11 @@ class RecentChatActivity : AppCompatActivity() {
     }
 
     inner class TabPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 1
 
         override fun createFragment(position: Int): Fragment {
             return when (position) {
-                0 -> RecentChats()
-                1 -> AllChats()
+                0 ->AllChats()
                 else -> Fragment()
             }
         }

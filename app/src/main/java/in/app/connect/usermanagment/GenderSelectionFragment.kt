@@ -67,24 +67,19 @@ class GenderSelectionFragment : Fragment() {
 
 
     private fun selectCard(index: Int) {
-        val selectedColor = ContextCompat.getColor(requireContext(), R.color.red) // Replace R.color.colorPrimary with your actual resource ID
+        val selectedColor = ContextCompat.getColor(requireContext(), R.color.red) // Replace R.color.red with your selected color
 
         for (i in cardViews.indices) {
             if (i == index) {
                 // Update the stroke color of the newly selected card to the selected color
                 cardViews[i].strokeColor = selectedColor
                 cardViews[i].strokeWidth = 1
-                println(i)
             } else {
-                val defaultTextColorAttr = android.R.attr.textColorPrimary
-                val typedArray: TypedArray = requireContext().obtainStyledAttributes(intArrayOf(defaultTextColorAttr))
-                val defaultColor = typedArray.getColor(0, 0)
-                typedArray.recycle()
-                println(i)
-                cardViews[i].strokeColor = defaultColor
-                cardViews[i].strokeWidth = 0 // Set to default stroke width (no stroke)
+                // Remove stroke from unselected cards
+                cardViews[i].strokeWidth = 0
             }
         }
+
         // Update the selected card index
         selectedGenderIndex = index
     }

@@ -298,12 +298,12 @@ class MainActivity : AppCompatActivity() {
         private val SWIPE_VELOCITY_THRESHOLD = 100
 
         override fun onFling(
-            e1: MotionEvent,
+            e1: MotionEvent?,
             e2: MotionEvent,
             velocityX: Float,
             velocityY: Float
         ): Boolean {
-            val diffX = e2.x - e1.x
+            val diffX = e2.x - e1!!.x
             val isGlobalProfileFragment = activeFragment is BottomGlobalProfileFragment
             val isNearbyFragment = activeFragment is BottomNearbyFragment
 

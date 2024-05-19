@@ -18,4 +18,3 @@ class RecentChats : Fragment() {
         return inflater.inflate(R.layout.fragment_recent_chats, container, false)
     }
 }
-

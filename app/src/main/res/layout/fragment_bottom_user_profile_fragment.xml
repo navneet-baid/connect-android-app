@@ -1,307 +1,302 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bottomnav.userprofile.BottomUserProfileFragment">
 
-
-    <RelativeLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!-- Profile Picture and Stats Section -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/profile_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="8dp"
-            app:cardCornerRadius="6dp">
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
 
-            <LinearLayout
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Profile Picture and Stats Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/profile_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="-2dp"
-                android:layout_marginEnd="0dp"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:elevation="8dp"
+                app:cardCornerRadius="6dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <com.facebook.shimmer.ShimmerFrameLayout
-                        android:id="@+id/profileShimmerLayout"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp">
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:src="@drawable/ic_user"
-                            app:civ_border_color="@color/red"
-                            app:civ_border_width="2dp" />
-                    </com.facebook.shimmer.ShimmerFrameLayout>
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profileImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:src="@drawable/ic_user"
-                        android:visibility="gone"
-                        app:civ_border_color="@color/red"
-                        app:civ_border_width="2dp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="48dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/noOfPosts"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Posts"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/connectedConnectionsLayout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/connectedConnectionsCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="connected"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/pendingConnectionsLayout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="12dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/pendingConnectionsCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="pending"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="14sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:elevation="4dp">
+                    android:layout_marginTop="-2dp"
+                    android:orientation="vertical"
+                    android:padding="16dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
-                        <!-- User Name and QR Code -->
+                        <com.facebook.shimmer.ShimmerFrameLayout
+                            android:id="@+id/profileShimmerLayout"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:src="@drawable/ic_user"
+                                app:civ_border_color="@color/red"
+                                app:civ_border_width="2dp" />
+                        </com.facebook.shimmer.ShimmerFrameLayout>
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profileImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_user"
+                            android:visibility="gone"
+                            app:civ_border_color="@color/red"
+                            app:civ_border_width="2dp" />
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
                             android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/profileName"
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/noOfPosts"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Posts"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/connectedConnectionsLayout"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="John Doe"
-                                android:textColor="?android:textColorPrimary"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-
-                            <ImageView
-                                android:id="@+id/qrCodeImageView"
-                                android:layout_width="22dp"
-                                android:layout_height="22dp"
+                                android:layout_gravity="center"
                                 android:layout_marginStart="8dp"
-                                android:src="@drawable/ic_qr"
-                                app:tint="?android:textColorPrimary" />
-                        </LinearLayout>
+                                android:gravity="center"
+                                android:orientation="vertical">
 
-                        <!-- User Age, Gender, Location, Hometown, and Bio -->
+                                <TextView
+                                    android:id="@+id/connectedConnectionsCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="connected"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/pendingConnectionsLayout"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="6dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/pendingConnectionsCount"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="pending"
+                                    android:textColor="?android:textColorPrimary"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:elevation="4dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
                             android:orientation="vertical">
 
-                            <!-- User Age, Gender -->
+                            <!-- User Name and QR Code -->
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:id="@+id/userAgeIcon"
+                                    android:id="@+id/profileName"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="⌛"
+                                    android:text="John Doe"
                                     android:textColor="?android:textColorPrimary"
-                                    android:textSize="18sp" />
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
 
-                                <TextView
-                                    android:id="@+id/userAge"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="18"
-                                    android:textColor="?android:textColorPrimary"
-                                    android:textSize="18sp" />
-
-                                <View
-                                    android:id="@+id/user_gender"
-                                    android:layout_width="2dp"
-                                    android:layout_height="match_parent"
-                                    android:layout_marginHorizontal="8dp"
-                                    android:background="?android:textColorPrimary" />
-
-                                <TextView
-                                    android:id="@+id/userGender"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="Male"
-                                    android:textColor="?android:textColorPrimary"
-                                    android:textSize="18sp" />
+                                <ImageView
+                                    android:id="@+id/qrCodeImageView"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
+                                    android:layout_marginStart="8dp"
+                                    android:src="@drawable/ic_qr"
+                                    app:tint="?android:textColorPrimary" />
                             </LinearLayout>
 
-                            <!-- Location, Hometown, and Bio -->
-                            <TextView
-                                android:id="@+id/location"
+                            <!-- User Age, Gender, Location, Hometown, and Bio -->
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
-                                android:drawableStart="@drawable/ic_nearby"
-                                android:drawableTint="?android:textColorPrimary"
-                                android:text=""
-                                android:textColor="?android:textColorPrimary" />
+                                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/hometown"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text=""
-                                android:drawableStart="@drawable/ic_home"
-                                android:drawableTint="?android:textColorPrimary"
-                                android:textColor="?android:textColorPrimary" />
+                                <!-- User Age, Gender -->
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/userBio"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:text="This is a brief user bio. It can be a longer text providing more information about the user."
-                                android:textColor="?android:textColorPrimary" />
+                                    <TextView
+                                        android:id="@+id/userAgeIcon"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="⌛"
+                                        android:textColor="?android:textColorPrimary"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:id="@+id/userAge"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:text="18"
+                                        android:textColor="?android:textColorPrimary"
+                                        android:textSize="18sp" />
+
+                                    <View
+                                        android:id="@+id/user_gender"
+                                        android:layout_width="2dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginHorizontal="8dp"
+                                        android:background="?android:textColorPrimary" />
+
+                                    <TextView
+                                        android:id="@+id/userGender"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="4dp"
+                                        android:text="Male"
+                                        android:textColor="?android:textColorPrimary"
+                                        android:textSize="18sp" />
+                                </LinearLayout>
+
+                                <!-- Location, Hometown, and Bio -->
+                                <TextView
+                                    android:id="@+id/location"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:drawableStart="@drawable/ic_nearby"
+                                    android:drawableTint="?android:textColorPrimary"
+                                    android:text=""
+                                    android:textColor="?android:textColorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/hometown"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text=""
+                                    android:drawableStart="@drawable/ic_home"
+                                    android:drawableTint="?android:textColorPrimary"
+                                    android:textColor="?android:textColorPrimary" />
+
+                                <TextView
+                                    android:id="@+id/userBio"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="This is a brief user bio. It can be a longer text providing more information about the user."
+                                    android:textColor="?android:textColorPrimary" />
+                            </LinearLayout>
                         </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-        <!-- User Posts -->
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profile_header"
-            android:layout_centerInParent="true"
-            android:indeterminateTint="@color/red" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/userBlogRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_header"
-            android:layout_marginBottom="48dp"
-            android:padding="5dp" />
-
-        <LinearLayout
-            android:id="@+id/noPostLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_header"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
+            <!-- User Posts -->
+            <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_below="@+id/profile_header"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/red" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userBlogRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_header"
+                android:layout_marginBottom="48dp"
+                android:padding="5dp" />
+
+            <LinearLayout
+                android:id="@+id/noPostLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/profile_header"
                 android:gravity="center"
-                android:text="No Blogs Yet"
-                android:textColor="?android:textColorPrimary"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-        </LinearLayout>
+                android:orientation="vertical"
+                android:visibility="gone">
 
-    </RelativeLayout>
-
-
-</FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="No Blogs Yet"
+                    android:textColor="?android:textColorPrimary"
+                    android:textSize="16sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

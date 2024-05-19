@@ -59,18 +59,5 @@
             android:textSize="12sp"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@id/nameTextView" />
-
-        <!-- TextView for the number of unseen messages -->
-        <TextView
-            android:id="@+id/unseenMsgTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/timeTextView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="16dp"
-            android:text="3"
-            android:textColor="?android:textColorPrimary"
-            android:textSize="16sp" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
