@@ -19,10 +19,14 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -31,6 +35,8 @@ import com.google.firebase.database.ValueEventListener
 import `in`.app.connect.PopupViewProfile
 import `in`.app.connect.R
 import `in`.app.connect.utils.SessionManager
+import org.json.JSONException
+import org.json.JSONObject
 
 class ChatActivity : AppCompatActivity() {
     private lateinit var messagesAdapter: MessagesAdapter
@@ -50,6 +56,8 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var typingReference: DatabaseReference
     private lateinit var usersReference: DatabaseReference
     private var isBlocked = false
+    private lateinit var receiverToken :String
+    private lateinit var chatUserProfileImage :String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -63,8 +71,9 @@ class ChatActivity : AppCompatActivity() {
 
         // Get user data from the intent
         chatUserPhoneNumber = intent.getStringExtra("CHAT_USER_PHONE_NUMBER") ?: ""
+        receiverToken = intent.getStringExtra("CHAT_USER_FCM_TOKEN") ?: ""
         nameTextView.text = intent.getStringExtra("CHAT_USER_NAME") ?: ""
-        val chatUserProfileImage = intent.getStringExtra("CHAT_USER_PROFILE_IMAGE") ?: ""
+        chatUserProfileImage = intent.getStringExtra("CHAT_USER_PROFILE_IMAGE") ?: ""
         if (chatUserProfileImage.isNotEmpty()) {
             Glide.with(this)
                 .load(chatUserProfileImage)
@@ -135,17 +144,26 @@ class ChatActivity : AppCompatActivity() {
 
     private fun fetchMessages() {
         databaseReference.child(currentUserPhoneNumber).child(chatUserPhoneNumber)
-            .addValueEventListener(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    messagesList.clear()
-                    for (dataSnapshot in snapshot.children) {
-                        val message = dataSnapshot.getValue(Message::class.java)
-                        if (message != null) {
-                            messagesList.add(message)
-                        }
+            .addChildEventListener(object : ChildEventListener {
+                override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                    val message = snapshot.getValue(Message::class.java)
+                    if (message != null) {
+                        messagesList.add(message)
+                        messagesAdapter.notifyItemInserted(messagesList.size - 1)
+                        messagesRecyclerView.scrollToPosition(messagesList.size - 1)
                     }
-                    messagesAdapter.notifyDataSetChanged()
-                    messagesRecyclerView.scrollToPosition(messagesList.size - 1)
+                }
+
+                override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                    // Handle child changed if necessary
+                }
+
+                override fun onChildRemoved(snapshot: DataSnapshot) {
+                    // Handle child removed if necessary
+                }
+
+                override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                    // Handle child moved if necessary
                 }
 
                 override fun onCancelled(error: DatabaseError) {
@@ -154,6 +172,45 @@ class ChatActivity : AppCompatActivity() {
             })
     }
 
+    private fun sendPushNotification(receiverToken: String, message: String) {
+        try {
+            val json = JSONObject()
+            json.put("to", receiverToken)
+            val notification = JSONObject()
+notification.put("title", "New chat from ${sessionManager.getUserDetailFromSession()[sessionManager.KEY_FULLNAME].toString()}")
+notification.put("body", message)
+json.put("notification", notification)
+val data = JSONObject()
+data.put("message", message)
+data.put("phoneNumber", currentUserPhoneNumber)
+        data.put("chat", true)
+        json.put("data", data)
+
+        val url = "https://fcm.googleapis.com/fcm/send"
+        val jsonObjectRequest = object : JsonObjectRequest(
+            Method.POST, url, json,
+            Response.Listener { response ->
+                // Handle success
+            },
+            Response.ErrorListener { error ->
+                // Handle error
+            }) {
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String, String>()
+                headers["Content-Type"] = "application/json"
+                headers["Authorization"] = "key=AAAAaZhi2z4:APA91bE5d7PFZB5LyDtXp9CFgkAe7Afnc0il0ETL9zujB_6fwv_mGZu0r_ETCTp-v3nNWh8yDM7DflvrTmycl4sGCFZUg-fWglLIsA3CLNRH2JWv476RtNzhrwfP6sVTzTRxkYCD26GX" // Replace with your server key
+                return headers
+                }
+            }
+
+            // Add the request to the RequestQueue
+            Volley.newRequestQueue(this).add(jsonObjectRequest)
+
+        } catch (e: JSONException) {
+            e.printStackTrace()
+        }
+    }
     private fun sendMessage() {
         val messageText = messageEditText.text.toString().trim()
         if (messageText.isNotEmpty()) {
@@ -166,6 +223,8 @@ class ChatActivity : AppCompatActivity() {
                         .child(messageId).setValue(message)
                     databaseReference.child(chatUserPhoneNumber).child(currentUserPhoneNumber)
                         .child(messageId).setValue(message)
+                    // Send push notification
+                    sendPushNotification(receiverToken, messageText)
                 }
 
                 messageEditText.text.clear()

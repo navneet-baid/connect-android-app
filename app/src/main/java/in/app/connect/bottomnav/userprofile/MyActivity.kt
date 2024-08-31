@@ -150,7 +150,7 @@ class MyActivity : AppCompatActivity() {
 
         // Create a BarDataSet from the BarEntries
         val barDataSet = BarDataSet(barEntries, "Total Usage Minutes")
-        barDataSet.color = ContextCompat.getColor(this, R.color.black) // Customize the color
+        barDataSet.color = ContextCompat.getColor(this, R.color.red) // Customize the color
 
         // Create a BarData and set the BarDataSet
         val barData = BarData(barDataSet)
@@ -241,7 +241,7 @@ class MyActivity : AppCompatActivity() {
         }
 
         val dataSet = LineDataSet(entries, "Usage Hours")
-        dataSet.color = Color.BLACK // Customize the line color
+        dataSet.color = Color.RED // Customize the line color
 
         val lineData = LineData(dataSet)
 

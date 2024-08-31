@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textMultiLine|textAutoCorrect"
-                    android:maxLength="1024"
+                    android:maxLength="15000"
                     android:gravity="top"
                     android:padding="8dp"
                     android:scrollbars="vertical" />

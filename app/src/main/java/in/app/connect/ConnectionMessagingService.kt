@@ -1,18 +1,16 @@
 package `in`.app.connect
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import `in`.app.connect.bottomnav.chat.AllChats
+import `in`.app.connect.bottomnav.chat.RecentChatActivity
 import java.util.Random
 
 const val channelId = "notification_channel"
@@ -31,13 +29,23 @@ class ConnectionMessagingService : FirebaseMessagingService() {
         println(remoteMessage.data)
         val notificationBody = remoteMessage.data["message"] ?: remoteMessage.notification?.body ?: ""
         val phoneNumber = remoteMessage.data["phoneNumber"].toString()
-        generateNotification(remoteMessage.notification?.title ?: "", notificationBody,phoneNumber)
+        val chat = remoteMessage.data["chat"].toBoolean()
+        generateNotification(remoteMessage.notification?.title ?: "", notificationBody,phoneNumber,chat)
     }
 
-
-    private fun generateNotification(title: String, message: String,phoneNumber:String) {
-        val intent = Intent(this, PopupViewProfile::class.java)
-        intent.putExtra("phoneNumber",phoneNumber)
+    private fun generateNotification(
+        title: String,
+        message: String,
+        phoneNumber: String,
+        chat: Boolean
+    ) {
+        var intent=Intent()
+        if(chat){
+            intent = Intent(this, RecentChatActivity::class.java)
+        }else{
+            intent = Intent(this, PopupViewProfile::class.java)
+            intent.putExtra("phoneNumber",phoneNumber)
+        }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(
             this,
@@ -68,5 +76,6 @@ class ConnectionMessagingService : FirebaseMessagingService() {
         }
         val notificationId = Random().nextInt(100000)
         notificationManager.notify(notificationId, builder.build())
+        }
     }
-}
+

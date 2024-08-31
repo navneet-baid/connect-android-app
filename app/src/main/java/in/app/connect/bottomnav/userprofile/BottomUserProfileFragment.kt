@@ -51,6 +51,9 @@ class BottomUserProfileFragment : Fragment(), MainActivity.RefreshableFragment {
     override fun refreshContent() {
         adapter.updateData(mutableListOf()) // Clear the list of blog posts
         progressBar.visibility = View.VISIBLE
+        userBio.text=userDetails[sessionManager.KEY_BIO].toString()
+        location.text=userDetails[sessionManager.KEY_LOCATION].toString()
+        hometown.text=userDetails[sessionManager.KEY_HOMETOWN].toString()
         fetchPendingConnectionsCount(
             FirebaseDatabase.getInstance().reference.child("Connections"),
             userDetails[sessionManager.KEY_PHONENUMBER].toString(),
@@ -409,7 +412,6 @@ class BottomUserProfileFragment : Fragment(), MainActivity.RefreshableFragment {
             }
 
             textEditProfile.setOnClickListener {
-
                 val intent = Intent(requireContext(), Setting_Menu_Activity::class.java)
                 startActivity(intent)
                 dismiss()

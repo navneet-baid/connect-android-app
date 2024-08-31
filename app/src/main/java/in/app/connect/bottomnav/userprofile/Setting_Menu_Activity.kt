@@ -119,6 +119,7 @@ class Setting_Menu_Activity : AppCompatActivity(), EditAboutInfo.UpdateListener 
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 editTextBio.setText(newBio)
+                                sessionManager.updateBio(newBio!!)
                             } else {
                                 Toast.makeText(
                                     this@Setting_Menu_Activity,
@@ -131,7 +132,6 @@ class Setting_Menu_Activity : AppCompatActivity(), EditAboutInfo.UpdateListener 
             })
 
             bioDialogFragment.show(supportFragmentManager, bioDialogFragment.tag)
-
         }
 
 

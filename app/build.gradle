@@ -92,4 +92,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:4.2.0' // Use the latest version
     //chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+    //
+
+
 }

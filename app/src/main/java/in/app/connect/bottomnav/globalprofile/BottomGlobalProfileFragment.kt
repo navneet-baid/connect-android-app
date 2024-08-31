@@ -151,8 +151,7 @@ class UserProfileAdapter(
 
 
                 // Initialize dialog views
-                val dialogUsernameTextView =
-                    dialog.findViewById<TextView>(R.id.dialogUsernameTextView)
+                val dialogUsernameTextView = dialog.findViewById<TextView>(R.id.dialogUsernameTextView)
                 val dialogAgeTextView = dialog.findViewById<TextView>(R.id.dialogAgeTextView)
                 val dialogGenderTextView = dialog.findViewById<TextView>(R.id.dialogGenderTextView)
                 val dialogBioTextView = dialog.findViewById<TextView>(R.id.dialogBioTextView)
@@ -175,6 +174,7 @@ class UserProfileAdapter(
 
                 // Set data to dialog views
                 dialogUsernameTextView.text = userProfile.userData.userName
+                println(userProfile.userData.userName)
                 dialogGenderTextView.text = userProfile.userData.gender
                 dialogBioTextView.text = userProfile.userData.bio
                 dialogAgeTextView.text = userProfile.userData.dob

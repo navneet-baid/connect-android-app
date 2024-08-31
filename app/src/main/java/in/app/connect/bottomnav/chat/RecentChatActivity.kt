@@ -56,8 +56,8 @@ class RecentChatActivity : AppCompatActivity() {
         }.attach()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_recent_chat, menu)
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.menu_recent_chat, menu)
 //        val searchItem = menu.findItem(R.id.action_search)
 //        searchView = searchItem.actionView as SearchView
 //
@@ -65,17 +65,17 @@ class RecentChatActivity : AppCompatActivity() {
 //            override fun onQueryTextSubmit(query: String?): Boolean {
 //                // Handle query submission here
 //                return true
-//            }
+//           }
 //
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                // Handle query text change here
+//           override fun onQueryTextChange(newText: String?): Boolean {
+//               // Handle query text change here
 //                return true
 //            }
 //        })
-
-        return true
-    }
-
+//
+//        return true
+//    }
+//
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         gestureDetector.onTouchEvent(event)

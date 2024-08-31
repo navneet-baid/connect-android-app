@@ -115,9 +115,6 @@
             android:name=".bottomnav.userprofile.Setting_Menu_Activity"
             android:exported="false" />
         <activity
-            android:name=".bottomnav.userprofile.SettingMenuActivity"
-            android:exported="false" />
-        <activity
             android:name=".bottomnav.chat.RecentChatActivity"
             android:exported="false" />
         <activity

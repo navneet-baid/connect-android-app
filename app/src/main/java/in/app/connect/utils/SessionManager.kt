@@ -80,6 +80,13 @@ class SessionManager {
         editor.commit()
 
     }
+    fun updateBio(
+        bio: String = ""
+    ) {
+        editor.putString(KEY_BIO, bio)
+        editor.commit()
+
+    }
 
     fun getUserDetailFromSession(): HashMap<String, Any> {
         val userData: HashMap<String, Any> = HashMap()
